@@ -1,13 +1,12 @@
 import { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1>Contatore: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>Incrementa</button>
-      <button onClick={() => setCount(count - 1)}>Decrementa</button>
+      <h1 className='text-danger'>Hello</h1>
     </>
   )
 }
