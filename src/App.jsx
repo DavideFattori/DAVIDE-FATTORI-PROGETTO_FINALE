@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { RouterProvider } from "react-router";
+import router from "./routes/Routes";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1 className='text-danger'>Hello</h1>
-    </>
+    <RouterProvider router={router} />
   )
 }
 
-export default App
+function Root() {
+  return <App />
+}
+
+export default Root;
+

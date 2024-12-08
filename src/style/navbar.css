@@ -1,0 +1,7 @@
+@import './constants.css';
+
+.btnSearchNavCustom{
+    background-color: var(--bg-acc);
+    color: #000;
+    border-radius: 50%;
+}
