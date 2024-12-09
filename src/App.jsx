@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { RouterProvider } from "react-router";
 import router from "./routes/Routes";
+import Navbar from "./components/Navbar";
 
 function App() {
+  
   return (
-    <RouterProvider router={router} />
+    <>  
+      <Navbar />
+      <RouterProvider router={router} />
+    </>
   )
 }
 

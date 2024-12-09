@@ -1,0 +1,16 @@
+@import './constants.css';
+
+header{
+    height: 75vh;
+    background-image: url(../../header.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.headerTitle{
+    height: 75vh;
+    background: rgba(0, 0, 0, 0.499);
+    /* backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(0px); */
+}

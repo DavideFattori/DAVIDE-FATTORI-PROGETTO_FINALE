@@ -1,1 +1,5 @@
-@import './constants.css'
+@import './constants.css';
+
+.Root{
+    background-color: var(--bg-black);
+}

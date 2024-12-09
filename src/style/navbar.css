@@ -1,7 +1,49 @@
 @import './constants.css';
 
+
+nav{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.588) 45%, rgba(255,255,255,0) 100%);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+.logoNav{
+    height: 30px;
+}
+
+
+.searchInputCustom{
+    background-color: transparent;
+    color: #ffffff !important;
+}
+
+.searchInputCustom::placeholder{
+    color: #ffffff !important;
+}
+
+
+.searchInputCustom:focus{
+    background-color: transparent;
+    border-color: white !important;
+    box-shadow: none !important;
+}
+
 .btnSearchNavCustom{
-    background-color: var(--bg-acc);
-    color: #000;
+    position: absolute;
+    text-align: center;
+    border: none;
+    width: 40px;
+    height: 100%;
+    background-color: transparent;
+    color: #ffffff;
     border-radius: 50%;
+    top: 2px;
+    right: 50px;
+    transition: 0.2s;
+}
+
+.btnSearchNavCustom:hover{
+    background-color: transparent;
+    color: var(--text-acc);
+    transition: 0.2s;
 }

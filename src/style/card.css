@@ -1,0 +1,37 @@
+@import './constants.css';
+
+.cardCustom {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+    transition: 0.2s;
+}
+
+.cardCustom:hover {
+    transition: 0.2s;
+}
+
+
+.cardContentCustom {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: 0.2s;
+
+}
+
+.cardContentCustom:hover {
+    padding: 0px !important;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition: 0.2s;
+
+    .cardText {
+        background: rgba(0, 0, 0, 0.721);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(6px);
+        transition: 0.2s;
+    }
+}
