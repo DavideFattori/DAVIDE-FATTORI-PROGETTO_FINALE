@@ -6,7 +6,7 @@ import Sidebar from "../components/Sidebar";
 
 export default function AppHome() {
 
-    const { data: games, loading: loadingGames, error: errorGames } = useFetch(`${import.meta.env.VITE_API_BASE_URL}games?key=${import.meta.env.VITE_API_KEY}&dates=2023-01-01,2024-01-01`);
+    const { data: games, loading: loadingGames, error: errorGames } = useFetch(`${import.meta.env.VITE_API_BASE_URL}games?key=${import.meta.env.VITE_API_KEY}&dates=2023-01-01,2024-01-12`);
 
     return (
         <div>

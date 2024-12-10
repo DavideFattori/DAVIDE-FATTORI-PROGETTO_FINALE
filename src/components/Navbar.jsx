@@ -2,7 +2,7 @@ import '../style/navbar.css'
 
 export default function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg fixed-top">
+        <nav className="navbar navbar-expand-lg position-absolute w-100">
             <div className="container-fluid">
                 <a className="navbar-brand text-white" href="#"><img className='logoNav me-2' src="/logo_bordo.png" alt="logo" />Rehacktor</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,12 +15,12 @@ export default function Navbar() {
                         <button className="btnSearchNavCustom" type="submit"><i className="fi fi-rr-search"></i></button>
                     </form>
 
-                    <ul className="navbar-nav ms-5 mb-2 mb-lg-0">
+                    <ul className="navbar-nav ms-4 mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
+                            <a className="nav-link active text-white" aria-current="page" href="#">Registrati</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-white" href="#">Link</a>
+                            <a className="nav-link text-white" href="#">Accedi</a>
                         </li>
                     </ul>
 

@@ -1,0 +1,31 @@
+@import './constants.css';
+
+.imgFilter{
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10%;
+}
+
+/* .linkSidebar{
+    height: 100%;
+} */
+
+.linkSidebar:hover{
+    color: var(--bg-acc) !important;
+}
+
+
+.filterList{
+    max-height: 180px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.filterList:hover{
+    max-height: 1000px;
+    overflow-y: auto;
+    transition: max-height 0.5s ease;
+}

@@ -16,13 +16,13 @@ function useFetch(url) {
         (async function fetchData() {
             setLoading(true);
             try {
-                await new Promise((resolve) => setTimeout(resolve, 1500));
+                // await new Promise((resolve) => setTimeout(resolve, 1500));
                 const response = await fetch(url);
                 const json = await response.json();
                 setData(json.results);
                 setLoading(false);
 
-                console.log(json.results);
+                // console.log(json.results);
                 
             } catch (error) {
                 setLoading(false);
