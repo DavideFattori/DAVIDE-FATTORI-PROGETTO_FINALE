@@ -8,22 +8,21 @@ import Sidebar from "../components/Sidebar";
 
 export default function AppHome() {
 
-    // const [focus, setFocus] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     let games = useAsyncList({
         async load({ signal, cursor }) {
             setLoading(true);
-           // try {
+        try {
                 let response = await fetch(cursor || `${import.meta.env.VITE_API_BASE_URL}games?key=${import.meta.env.VITE_API_KEY}&dates=2023-01-01,2024-01-12&page=1`, { signal });
                 let json = await response.json();
                 setLoading(false);
                 return {items: json.results, cursor: json.next};
-            // } catch (error) {
-            //     setLoading(false);
-            //     setError(`Error: ${error.message}`);
-            // }
+            } catch (error) {
+                setLoading(false);
+                setError(`Error: ${error.message}`);
+            }
         }
     });
 
@@ -38,18 +37,6 @@ export default function AppHome() {
     }, [inView, games]);
 
 
-    console.log(games);
-    
-
-
-    // const handleFocus = () => {
-    //     setFocus(true);
-    // }
-
-    // const handleBlur = () => {
-    //     setFocus(false);
-    // }
-
     return (
         <div>
             <div className="container-fluid">
@@ -57,7 +44,7 @@ export default function AppHome() {
                     <div className="col-12 p-0 mb-3">
                         <Header />
                     </div>
-                    {loading ? <div className="w-100 d-flex justify-content-center"><Loader /></div> : null}
+                    
                     {error ? <div className="w-100 d-flex justify-content-center">{error}</div> : null}
                     <div className="col-2">
                         <Sidebar />
@@ -70,7 +57,7 @@ export default function AppHome() {
                                 </div>
                             ))}
                         </div>
-                        <div className="w-100 d-flex justify-content-center" ref={ref}><Loader /></div>
+                        <div className="w-100 d-flex justify-content-center my-3" ref={ref}>{loading ? <div className="w-100 d-flex justify-content-center"><Loader /></div> : null}</div>
                     </div>
                 </div>
             </div>

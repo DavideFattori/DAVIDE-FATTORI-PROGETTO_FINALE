@@ -1,10 +1,72 @@
 @import './constants.css';
 
+.gameDetailContainer{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-.gameDetailContainer {
-    height: 100vh;
-    width: 100%;
+
+.gameDetail {
+    padding-top: 80px;
+    display: flex;
+    align-items: center;
     background: rgba(0, 0, 0, 0.471);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(4px);
+}
+
+
+
+.gameTitle{
+    font-size: 4rem;
+}
+
+.genreLink{
+    background-color: rgba(255, 255, 255, 0.227);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.genreLink:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
+}
+
+
+.platformLink{
+    background-color: rgba(0, 0, 0, 0.227);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+
+.platformLink:hover{
+    background-color: rgba(255, 119, 0, 0.5);
+    transition: 0.3s;
+}
+
+.gameImg{
+    width: 50%;
+}
+
+
+.moreInfo{
+    background: linear-gradient(0deg, rgba(0,0,0,1) 5%, rgba(255,255,255,0) 100%);
+}
+
+
+.descrizione{
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.gameInfoDetails{
+    background: rgba(255, 255, 255, 0.05);
 }

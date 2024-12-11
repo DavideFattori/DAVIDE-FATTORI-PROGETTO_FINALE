@@ -8,6 +8,10 @@ nav{
     -webkit-backdrop-filter: blur(0px);
 }
 
+.linkCustom:hover{
+    color: var(--text-acc) !important;
+}
+
 .logoNav{
     height: 30px;
 }
@@ -47,4 +51,45 @@ nav{
     background-color: transparent;
     color: var(--text-acc);
     transition: 0.2s;
+}
+
+.searchResultsContainer{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.searchSuggestions{
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    height: fit-content;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.908);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.imgSearch{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+
+.btnCloseSearchResults{
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+
+.btnCloseSearchResults:hover{
+    color: var(--text-acc);
 }

@@ -1,26 +1,69 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router";
 import '../style/navbar.css'
 
 export default function Navbar() {
+
+    const [search, setSearch] = useState('');
+    const [focus, setFocus] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
+
+    useEffect(() => {
+        const timeoutAPI = setTimeout(() => {
+            (async function() {
+                if (!search) return;
+                setSearchResults([]);
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}games?key=${import.meta.env.VITE_API_KEY}&page=1&search=${search}`);
+                const json = await response.json();
+                setSearchResults(json.results);
+            })();
+        }, 500);
+
+        return () => {
+            clearTimeout(timeoutAPI);
+        }
+    }, [search]);
+
+    const clearSearch = () => {
+        setFocus(false);
+        setSearch('');
+        setSearchResults([]);
+    }
+
     return (
         <nav className="navbar navbar-expand-lg position-absolute w-100">
             <div className="container-fluid">
-                <a className="navbar-brand text-white" href="#"><img className='logoNav me-2' src="/logo_bordo.png" alt="logo" />Rehacktor</a>
+                <Link to={'/'} className="navbar-brand text-white linkCustom"><img className='logoNav me-2' src="/logo_bordo.png" alt="logo" />Rehacktor</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    <form className="d-flex w-100 ms-md-5 position-relative" role="search">
-                        <input className="form-control me-2 rounded-pill searchInputCustom w-100 me-md-5" type="search" placeholder="Cerca" aria-label="Search" />
-                        <button className="btnSearchNavCustom" type="submit"><i className="fi fi-rr-search"></i></button>
+                    <form className="d-flex w-100 ms-md-5 position-relative me-3" role="search">
+                        <input className="form-control rounded-pill searchInputCustom w-100" onFocus={() => setFocus(true)} onChange={(e) => setSearch(e.target.value)} type="search" placeholder="Cerca" aria-label="Search" value={search} />
+                        {focus &&
+                            <div className="searchSuggestions d-flex flex-column">
+                                <button className="ms-auto btnCloseSearchResults" onClick={clearSearch}><i className="fi fi-br-cross"></i></button>
+                                <ul className="list-unstyled text-white searchResultsContainer">
+                                    {searchResults && searchResults.map((game) => (
+                                        <li className="d-flex align-items-center" key={game.id}>
+                                            <img className="imgSearch" src={game.background_image} alt="game-image" />
+                                            <Link to={`/game/${game.id}`} onClick={clearSearch} className="text-decoration-none text-white linkCustom">{game.name}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        }
+
+                        {/* <button className="btnSearchNavCustom" type="submit"><i className="fi fi-rr-search"></i></button> */}
                     </form>
 
                     <ul className="navbar-nav ms-4 mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active text-white" aria-current="page" href="#">Registrati</a>
+                            <a className="nav-link active text-white linkCustom" aria-current="page" href="#">Registrati</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-white" href="#">Accedi</a>
+                            <a className="nav-link text-white linkCustom" href="#">Accedi</a>
                         </li>
                     </ul>
 
@@ -29,3 +72,9 @@ export default function Navbar() {
         </nav>
     )
 }
+
+
+
+
+
+
