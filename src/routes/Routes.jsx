@@ -13,7 +13,7 @@ const router = createBrowserRouter(
             <Route path="/" element={<AppHome />} loader={filters} />
             <Route path="/game/:id" element={<GameDetail loader={gameFetch} />} />
             <Route path="/games/:genre" element={<GamesByGenre />} />
-            <Route path="/games/:platform" element={<GamesByPlatform />} />
+            <Route path="/games/platform/:platform" element={<GamesByPlatform />} />
         </Route>
     )
 );

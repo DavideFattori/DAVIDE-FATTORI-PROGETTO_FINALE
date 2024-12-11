@@ -42,7 +42,7 @@ export default function AppHome() {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 p-0 mb-3">
-                        <Header />
+                        <Header text="I MIGLIORI VIDEOGIOCHI DEL MOMENTO" />
                     </div>
                     
                     {error ? <div className="w-100 d-flex justify-content-center">{error}</div> : null}
@@ -51,8 +51,11 @@ export default function AppHome() {
                     </div>
                     <div className="col-10">
                         <div className="row">
+                            <div className="col-12 ps-0">
+                                <h2 className="text-white display-3 fw-bold mb-5">Tutti i giochi</h2>
+                            </div>
                             {games.items && games.items.map(game => (
-                                <div key={game.id} className="col-6 col-md-4 p-0">
+                                <div key={game.id} className="col-6 col-md-3 p-0 ">
                                     <Card game={game} />
                                 </div>
                             ))}

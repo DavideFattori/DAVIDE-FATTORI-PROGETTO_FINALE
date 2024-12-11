@@ -2,7 +2,7 @@
 
 header{
     height: 75vh;
-    background-image: url(../../header.jpg);
+    background-image: linear-gradient(0deg, rgb(0, 0, 0) 10%, rgba(255,255,255,0) 100%), url(../../header.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -11,6 +11,4 @@ header{
 .headerTitle{
     height: 75vh;
     background: rgba(0, 0, 0, 0.499);
-    /* backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(0px); */
 }
