@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import supabase from "../supabase/client";
 import '../style/navbar.css'
 
 export default function Navbar() {
@@ -29,6 +30,13 @@ export default function Navbar() {
         setSearch('');
         setSearchResults([]);
     }
+
+    const signOut = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            alert(error.message);
+        }
+    };
 
     return (
         <nav className="navbar navbar-expand-lg position-absolute w-100">
@@ -64,6 +72,9 @@ export default function Navbar() {
                         </li>
                         <li className="nav-item">
                             <Link to={'/login'} className="nav-link text-white linkCustom">Accedi</Link>
+                        </li>
+                        <li className="nav-item">
+                            <button className="btn btn-danger rounded-pill text-white" onClick={signOut} type="submit">Esci</button>
                         </li>
                     </ul>
 

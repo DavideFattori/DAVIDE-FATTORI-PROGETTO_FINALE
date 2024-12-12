@@ -1,15 +1,27 @@
 import { useState, useEffect } from "react";
 import { useAsyncList } from "react-stately";
 import { useInView } from "react-intersection-observer";
+import supabase from "../supabase/client";
 import Loader from "../components/Loader";
 import Card from "../components/Card";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
+
 export default function AppHome() {
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        (async function getSession(){
+            const { data } = await supabase.auth.getSession();
+            console.log(data);
+            
+        })();
+    }, []);
+
+
 
     let games = useAsyncList({
         async load({ signal, cursor }) {
@@ -39,6 +51,7 @@ export default function AppHome() {
 
     return (
         <div>
+            <a href="#" className="scrollTop"><i className="fi fi-br-angle-small-up"></i></a>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 p-0 mb-3">

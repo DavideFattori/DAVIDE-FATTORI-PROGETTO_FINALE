@@ -5,3 +5,26 @@
     --black: #000000;
     --white: #FFFFFF;
 }
+
+
+.scrollTop{
+    text-decoration: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    background-color: var(--acc);
+    color: var(--main);
+    padding: 5px 8px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.scrollTop:hover{
+    transform: translateY(-3px);
+    box-shadow: var(--acc) 0px 3px 0px 1px;
+    background-color: var(--main);
+    color: var(--acc);
+    transition: 0.2s;
+}

@@ -43,18 +43,22 @@ export default function GamesByGenre() {
 
 
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-12 p-0 mb-3">
-                    <Header text={genre} />
-                </div>
-                {games.items && games.items.map(game => (
-                    <div key={game.id} className="col-6 col-md-4 p-0">
-                        <Card game={game} />
+        <div>
+            <a href="#" className="scrollTop"><i className="fi fi-br-angle-small-up"></i></a>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-12 p-0 mb-3">
+                        <Header text={genre} />
                     </div>
-                ))}
-                <div className="w-100 d-flex justify-content-center my-3" ref={ref}>{loading ? <div className="w-100 d-flex justify-content-center"><Loader /></div> : null}</div>
+                    {games.items && games.items.map(game => (
+                        <div key={game.id} className="col-6 col-md-4 p-0">
+                            <Card game={game} />
+                        </div>
+                    ))}
+                    <div className="w-100 d-flex justify-content-center my-3" ref={ref}>{loading ? <div className="w-100 d-flex justify-content-center"><Loader /></div> : null}</div>
+                </div>
             </div>
         </div>
+        
     )
 }

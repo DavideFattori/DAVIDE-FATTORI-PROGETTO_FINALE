@@ -67,16 +67,18 @@ export default function GameDetail() {
                     <h1 className="text-white gameTitle mb-3">{game.name}</h1>
 
                     <h4 className="border-bottom text-white mb-3">Stores</h4>
-                    {game.stores && game.stores.map((store) => (
-                        <Link key={store.store.id} to={`/games/${store.store.id}`} className="text-white d-inline platformLink">{store.store.name}</Link>
-                    ))}
+                    <div className="mb-4">
+                        {game.stores && game.stores.map((store) => (
+                            <Link key={store.store.id} to={`/games/${store.store.id}`} className="text-white d-inline platformLink">{store.store.name}</Link>
+                        ))}
+                    </div>
 
-                    <h4 className="border-bottom text-white mb-3 mt-4">Generi</h4>
+                    <h4 className="border-bottom text-white mb-3">Generi</h4>
                     {game.genres && game.genres.map((genre) => (
                         <Link key={genre.id} to={`/games/${genre.slug}`} className="text-white d-inline genreLink">{genre.name} </Link>
                     ))}
 
-                    <h4 className="border-bottom text-white mb-3 mt-5">Data di rilascio: {game.released}</h4>
+                    <h4 className="border-bottom text-white mb-3 mt-4">Data di rilascio: {game.released}</h4>
                 </div>
 
                 <div className="row moreInfo d-flex justify-content-center m-0">
