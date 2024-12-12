@@ -6,6 +6,8 @@ import AppLayout from '../layout/AppLayout';
 import GameDetail from '../pages/GameDetail';
 import GamesByGenre from '../pages/GamesByGenre';
 import GamesByPlatform from '../pages/GamesByPlatform';
+import LoginPage from "../pages/LoginPage";
+import SignUpPage from "../pages/SignUpPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -14,6 +16,9 @@ const router = createBrowserRouter(
             <Route path="/game/:id" element={<GameDetail loader={gameFetch} />} />
             <Route path="/games/:genre" element={<GamesByGenre />} />
             <Route path="/games/platform/:platform" element={<GamesByPlatform />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="*" element={<h1>404</h1>} />
         </Route>
     )
 );

@@ -1,13 +1,7 @@
 :root{
-    --bg-main: #14213D;
-    --bg-sec: #E5E5E5;
-    --bg-acc: #FCA311;
-    --bg-black: #000000;
-    --bg-white: #FFFFFF;
-
-    --text-main: #14213D;
-    --text-sec: #E5E5E5;
-    --text-acc: #FCA311;
-    --text-black: #000000;
-    --text-white: #FFFFFF;
+    --main: #14213D;
+    --sec: #E5E5E5;
+    --acc: #FCA311;
+    --black: #000000;
+    --white: #FFFFFF;
 }

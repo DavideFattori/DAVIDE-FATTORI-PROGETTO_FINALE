@@ -60,10 +60,10 @@ export default function Navbar() {
 
                     <ul className="navbar-nav ms-4 mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active text-white linkCustom" aria-current="page" href="#">Registrati</a>
+                            <Link to={'/signup'} className="nav-link active text-white linkCustom" >Registrati</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-white linkCustom" href="#">Accedi</a>
+                            <Link to={'/login'} className="nav-link text-white linkCustom">Accedi</Link>
                         </li>
                     </ul>
 

@@ -1,0 +1,61 @@
+@import './constants.css';
+
+
+.formContainer{
+    background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.839) 0%, rgba(0,0,0,0.839) 100%), url(../../logSignBg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.linkToLogin{
+    color: var(--acc);
+}
+
+.linkToLogin:hover{
+    color: var(--main);
+}
+
+
+
+.inputCustom{
+    background-color: rgba(255, 255, 255, 0.209);
+    color: var(--white) !important;
+}
+
+.inputCustom::placeholder{
+    color: var(--white) !important;
+}
+
+
+.inputCustom:focus{
+    background-color: transparent;
+    border-color: var(--white) !important;
+    box-shadow: none !important;
+}
+
+.form{
+    background-color: rgba(255, 255, 255, 0.332);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10px;
+    padding: 50px;
+    margin: 0px 50px;
+}
+
+.btnCustom{
+    /* width: 20%; */
+    background-color: rgba(0, 0, 0, 0.471);
+    border: none;
+    transition: 0.2s;
+}
+
+.btnCustom:hover{
+    background-color: rgba(255, 166, 0, 0.738);
+    transition: 0.2s;
+}
