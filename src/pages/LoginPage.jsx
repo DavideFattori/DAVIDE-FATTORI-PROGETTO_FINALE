@@ -1,22 +1,48 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import supabase from '../supabase/client';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 import '../style/logSignPages.css'
 
 export default function LoginPage() {
+
+    const navigate = useNavigate();
 
     const handleSignIn = async (event) => {
         event.preventDefault();
         const formLogin = event.currentTarget;
         const { email, password } = Object.fromEntries(new FormData(formLogin));
         try {
-            const { data, error } = await supabase.auth.signInWithPassword({
+            const { error } = await supabase.auth.signInWithPassword({
                 email,
                 password,
             })
             if (error) {
-                alert(error)
+                toast.error(error.message, {
+                    position: "bottom-right",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
             } else {
+                toast.success('Login effettuato con successo', {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
+                await new Promise((resolve) => setTimeout(resolve, 3000));
                 formLogin.reset();
+                navigate('/');
             }
         } catch (error) {
             alert(error)
@@ -26,6 +52,7 @@ export default function LoginPage() {
 
     return (
         <div className="container-fluid text-white formContainer">
+            <ToastContainer />
             <div className="row w-50">
                 <div className="col-12">
                     <div className="rounded-3 p-4 form">

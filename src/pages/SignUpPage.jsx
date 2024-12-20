@@ -1,9 +1,11 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import supabase from '../supabase/client';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import '../style/logSignPages.css'
 
 export default function SignUpPage() {
+
+    const navigate = useNavigate();
 
     const handleSubmission = async (event) => {
 
@@ -13,7 +15,7 @@ export default function SignUpPage() {
         const { email, password, username, first_name, last_name } = Object.fromEntries(new FormData(formRegister));
 
         try {
-            const { data, error } = await supabase.auth.signUp({
+            const { error } = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
@@ -39,7 +41,7 @@ export default function SignUpPage() {
             } else {
                 toast.success('Utente registrato con successo', {
                     position: "bottom-right",
-                    autoClose: 2500,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: false,
                     pauseOnHover: true,
@@ -48,7 +50,9 @@ export default function SignUpPage() {
                     theme: "dark",
                     transition: Bounce,
                 });
+                await new Promise((resolve) => setTimeout(resolve, 3000));
                 formRegister.reset();
+                navigate('/');
             }
         } catch (error) {
             alert(error)

@@ -1,6 +1,6 @@
 import { RouterProvider } from "react-router";
 import router from "./routes/Routes";
-
+import SessionContextProvider from "./context/SessionContextProvider"
 
 function App() {
   
@@ -12,7 +12,11 @@ function App() {
 }
 
 function Root() {
-  return <App />
+  return (
+    <SessionContextProvider>
+      <App />
+    </SessionContextProvider>
+  )
 }
 
 export default Root;

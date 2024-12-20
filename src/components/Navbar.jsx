@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router";
 import supabase from "../supabase/client";
 import '../style/navbar.css'
+import SessionContext from "../context/SessionContext";
 
 export default function Navbar() {
 
     const [search, setSearch] = useState('');
     const [focus, setFocus] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
+    const session = useContext(SessionContext);
 
     useEffect(() => {
         const timeoutAPI = setTimeout(() => {
@@ -66,17 +68,22 @@ export default function Navbar() {
                         {/* <button className="btnSearchNavCustom" type="submit"><i className="fi fi-rr-search"></i></button> */}
                     </form>
 
-                    <ul className="navbar-nav ms-4 mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link to={'/signup'} className="nav-link active text-white linkCustom" >Registrati</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={'/login'} className="nav-link text-white linkCustom">Accedi</Link>
-                        </li>
-                        <li className="nav-item">
-                            <button className="btn btn-danger rounded-pill text-white" onClick={signOut} type="submit">Esci</button>
-                        </li>
-                    </ul>
+                    {!session ? 
+                        <ul className="navbar-nav ms-4 mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link to={'/signup'} className="nav-link active text-white linkCustom" >Registrati</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={'/login'} className="nav-link text-white linkCustom">Accedi</Link>
+                            </li>
+                        </ul>
+                        :
+                        <ul className="navbar-nav ms-4 mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <button className="btn btn-danger rounded-pill text-white" onClick={signOut} type="submit">Esci</button>
+                            </li>
+                        </ul>
+                        }
 
                 </div>
             </div>

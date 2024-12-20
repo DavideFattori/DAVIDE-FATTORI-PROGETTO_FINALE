@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAsyncList } from "react-stately";
 import { useInView } from "react-intersection-observer";
-import supabase from "../supabase/client";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 import Loader from "../components/Loader";
 import Card from "../components/Card";
 import Header from "../components/Header";
@@ -11,34 +11,36 @@ import Sidebar from "../components/Sidebar";
 export default function AppHome() {
 
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        (async function getSession(){
-            const { data } = await supabase.auth.getSession();
-            console.log(data);
-            
-        })();
-    }, []);
-
+    const [loadingError, setLoadingError] = useState(false);
 
 
     let games = useAsyncList({
         async load({ signal, cursor }) {
             setLoading(true);
-        try {
+            try {
                 let response = await fetch(cursor || `${import.meta.env.VITE_API_BASE_URL}games?key=${import.meta.env.VITE_API_KEY}&dates=2023-01-01,2024-01-12&page=1`, { signal });
                 let json = await response.json();
                 setLoading(false);
-                return {items: json.results, cursor: json.next};
+                return { items: json.results, cursor: json.next };
             } catch (error) {
                 setLoading(false);
-                setError(`Error: ${error.message}`);
+                setLoadingError(true);
+                toast.error('la pagina non si è caricata correttamente, riprovare', {
+                    position: "bottom-right",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
             }
         }
     });
 
-    const {ref, inView} = useInView({
+    const { ref, inView } = useInView({
         threshold: 1
     });
 
@@ -55,10 +57,10 @@ export default function AppHome() {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 p-0 mb-3">
-                        <Header text="I MIGLIORI VIDEOGIOCHI DEL MOMENTO" />
+                        <Header text="I MIGLIORI VIDEOGIOCHI DEL MOMENTO"/>
                     </div>
-                    
-                    {error ? <div className="w-100 d-flex justify-content-center">{error}</div> : null}
+
+                    {loadingError ? <ToastContainer /> : null}
                     <div className="col-2">
                         <Sidebar />
                     </div>
