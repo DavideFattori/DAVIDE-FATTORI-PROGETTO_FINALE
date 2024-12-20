@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import supabase from '../supabase/client';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 import '../style/logSignPages.css'
 
 export default function SignUpPage() {
@@ -7,17 +8,46 @@ export default function SignUpPage() {
     const handleSubmission = async (event) => {
 
         event.preventDefault();
+
         const formRegister = event.currentTarget;
-        const { email, password } = Object.fromEntries(new FormData(formRegister));
+        const { email, password, username, first_name, last_name } = Object.fromEntries(new FormData(formRegister));
+
         try {
             const { data, error } = await supabase.auth.signUp({
                 email,
                 password,
+                options: {
+                    data: {
+                        username,
+                        first_name,
+                        last_name,
+                    }
+                }
             })
             if (error) {
-                alert(error)
+                toast.error(error.message, {
+                    position: "bottom-right",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
             } else {
-                console.log(data);
+                toast.success('Utente registrato con successo', {
+                    position: "bottom-right",
+                    autoClose: 2500,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
                 formRegister.reset();
             }
         } catch (error) {
@@ -31,15 +61,22 @@ export default function SignUpPage() {
 
     return (
         <div className="container-fluid text-white formContainer">
+            <ToastContainer />
             <div className="row w-50">
                 <div className="col-12">
                     <div className="rounded-3 p-4 form">
                         <h1>Registrati</h1>
                         <form onSubmit={handleSubmission} className='d-flex flex-column justify-content-center'>
-                            <label className='mb-1' htmlFor="email">Email</label>
-                            <input className='rounded-pill inputCustom form-control' type="text" placeholder="Email" name="email" required />
-                            <label className='mb-1 mt-3' htmlFor="password">Password</label>
-                            <input className='rounded-pill inputCustom form-control' type="password" placeholder="Password" name="password" required />
+                            {/* <label className='mb-1' htmlFor="name">Nome</label> */}
+                            <input className='rounded-pill inputCustom form-control mt-3' type="text" placeholder="Username" name="username" required />
+                            {/* <label className='mb-1' htmlFor="name">Nome</label> */}
+                            <input className='rounded-pill inputCustom form-control mt-3' type="text" placeholder="Nome" name="first_name" required />
+                            {/* <label className='mb-1' htmlFor="name">Cognome</label> */}
+                            <input className='rounded-pill inputCustom form-control mt-3' type="text" placeholder="Cognome" name="last_name" required />
+                            {/* <label className='mb-1' htmlFor="email">Email</label> */}
+                            <input className='rounded-pill inputCustom form-control mt-3' type="text" placeholder="Email" name="email" required />
+                            {/* <label className='mb-1 mt-3' htmlFor="password">Password</label> */}
+                            <input className='rounded-pill inputCustom form-control mt-3' type="password" placeholder="Password" name="password" required />
                             <button className='btn rounded-pill mt-3 text-white btnCustom' type="submit">Registrati</button>
                         </form>
                         <h6 className='text-decoration-underline mb-0 mt-3'>Hai già un account? <Link className='text-decoration-none linkToLogin' to="/login">Accedi</Link></h6>
