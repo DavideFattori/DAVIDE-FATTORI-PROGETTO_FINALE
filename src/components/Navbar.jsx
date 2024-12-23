@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router";
 import supabase from "../supabase/client";
 import SessionContext from "../context/SessionContext";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import useProfile from "../hooks/useProfile";
+import getProfileAvatar from "../hooks/getProfileAvatar";
 import '../style/navbar.css'
 
 export default function Navbar() {
@@ -13,7 +15,8 @@ export default function Navbar() {
     const [showToast, setShowToast] = useState(false);
     const session = useContext(SessionContext);
     const navigate = useNavigate();
-    console.log(session);
+    const { username, avatar_url } = useProfile();
+    const avatarUrl = getProfileAvatar(avatar_url)
     
 
     useEffect(() => {
@@ -75,7 +78,7 @@ export default function Navbar() {
         <nav className="navbar navbar-expand-lg position-absolute w-100">
             {showToast && <ToastContainer />}
             <div className="container-fluid">
-                <Link to={'/'} className="navbar-brand text-white linkCustom"><img className='logoNav me-2' src="/logo_bordo.png" alt="logo" />Rehacktor</Link>
+                <Link to={'/'} className="navbar-brand text-white linkCustom"><img className='logoNav me-2' src="/images/logo_bordo.png" alt="logo" />Rehacktor</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -117,10 +120,20 @@ export default function Navbar() {
 
                         <ul className="navbar-nav ms-3 me-2 mb-2 mb-lg-0">
                             <li className="nav-item dropdown w-100">
-                                <button className="btn dropdownUser dropdown-toggle rounded-pill border-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {session.user.identities[0].identity_data.username}
+                                <button className="btn dropdownUser dropdown-toggle rounded-pill border-white d-flex ps-2 align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div className="me-1" style={{ 
+                                        backgroundImage: `url(${avatarUrl})`, 
+                                        backgroundSize: "cover", 
+                                        backgroundPosition: "center", 
+                                        backgroundRepeat: "no-repeat", 
+                                        width: "30px", 
+                                        height: "30px", 
+                                        borderRadius: "50%" 
+                                        }}>
+                                    </div>
+                                    {username}
                                 </button>
-                                <ul className="dropdown-menu p-0 dropdownMenuCustom border border-white mt-1">
+                                <ul className="dropdown-menu dropdown-menu-end p-0 dropdownMenuCustom border border-white mt-1">
                                     <li><Link className="dropdown-item text-white profileBtn" to={'/profile'}>Profilo</Link></li>
                                     <li className=""><a className="dropdown-item logoutBtn" href="#" onClick={signOut}>Esci</a></li>
                                 </ul>

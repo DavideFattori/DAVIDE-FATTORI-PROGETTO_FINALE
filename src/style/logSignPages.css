@@ -2,7 +2,7 @@
 
 
 .formContainer{
-    background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.839) 0%, rgba(0,0,0,0.839) 100%), url(../../logSignBg.jpg);
+    background-image:linear-gradient(0deg, rgba(0, 0, 0, 0.839) 0%, rgba(0,0,0,0.839) 100%), url(../../images/logSignBg.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -26,8 +26,6 @@ export default function GameDetail() {
         })();
     }, [id]);
 
-    console.log(game);
-
 
     const xValues = ['Recommended', 'Exceptional', 'Meh', 'Skip'];
     const yValues = [ratingRecommended, ratingExceptional, ratingMeh, ratingSkip];

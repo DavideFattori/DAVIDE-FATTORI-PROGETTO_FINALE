@@ -1,0 +1,13 @@
+@import './constants.css';
+@import './logSignPages.css';
+
+
+.profileContainerCustom{
+    padding-top: 80px;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.839) 0%, rgba(0,0,0,0.839) 100%), url(../../images/profileBg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
