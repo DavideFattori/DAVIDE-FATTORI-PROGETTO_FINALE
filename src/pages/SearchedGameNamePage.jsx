@@ -7,9 +7,9 @@ import Card from "../components/Card";
 import Header from "../components/Header";
 import '../style/filteredBy.css'
 
-export default function GamesByGenre() {
+export default function SearchedGameNamePage() {
 
-    const { platform, platformName } = useParams();
+    const { name } = useParams();
     const [loading, setLoading] = useState(false);
 
 
@@ -17,11 +17,9 @@ export default function GamesByGenre() {
         async load({ signal, cursor }) {
             setLoading(true);
         try {
-                let response = await fetch(cursor || `${import.meta.env.VITE_API_BASE_URL}games?key=${import.meta.env.VITE_API_KEY}&platfors=${platform}&page=1`, { signal });
+                let response = await fetch(cursor || `${import.meta.env.VITE_API_BASE_URL}games?key=${import.meta.env.VITE_API_KEY}&search=${name}&page=1`, { signal });
                 let json = await response.json();
                 setLoading(false);
-                console.log(json);
-                
                 return {items: json.results, cursor: json.next};
             } catch (error) {
                 setLoading(false);
@@ -30,9 +28,11 @@ export default function GamesByGenre() {
         }
     });
 
+
     const {ref, inView} = useInView({
         threshold: 1
     });
+
 
     useEffect(() => {
         if (inView && !games.isLoading && games.items.length) {
@@ -41,6 +41,10 @@ export default function GamesByGenre() {
     }, [inView, games]);
 
 
+    useEffect(() => {
+        games.reload();
+    }, [name]);
+
 
     return (
         <div>
@@ -48,7 +52,7 @@ export default function GamesByGenre() {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 p-0 mb-3">
-                        <Header text={platformName} />
+                        <Header text={name} />
                     </div>
                     {games.items && games.items.map(game => (
                         <div key={game.id} className="col-6 col-md-4 p-0">
@@ -59,5 +63,6 @@ export default function GamesByGenre() {
                 </div>
             </div>
         </div>
+        
     )
 }

@@ -23,7 +23,7 @@ export default function Sidebar() {
             {platforms.map((platform) => (
                     <li key={platform.id} className='d-flex my-3 align-items-center'>
                         <div className='imgFilter' style={{ backgroundImage: `url(${platform.image_background})` }} />
-                        <Link to={`/games/platform/${platform.id}`} className='text-white text-decoration-none ms-2 linkSidebar'>{platform.name}</Link>
+                        <Link to={`/games/platform/${platform.id}/${platform.name}`} className='text-white text-decoration-none ms-2 linkSidebar'>{platform.name}</Link>
                     </li>
                 ))}
             </ul>

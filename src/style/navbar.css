@@ -20,6 +20,7 @@ nav{
 .searchInputCustom{
     background-color: rgba(255, 255, 255, 0.209);
     color: var(--white) !important;
+    border-color: white !important;
 }
 
 .searchInputCustom::placeholder{
@@ -43,7 +44,7 @@ nav{
     color: var(--white);
     border-radius: 50%;
     top: 2px;
-    right: 50px;
+    right: -10px;
     transition: 0.2s;
 }
 
@@ -92,4 +93,40 @@ nav{
 
 .btnCloseSearchResults:hover{
     color: var(--acc);
+}
+
+
+
+.dropdownUser{
+    background-color: rgba(255, 140, 0, 0.209);
+    color: var(--white) !important;
+}
+
+
+.profileBtn:hover{
+    color: white !important;
+    background-color: rgba(133, 133, 133, 0.498) !important;
+    transition: 0.2s;    
+    border-radius: 10px 10px 0px 0px !important;
+}
+
+
+.logoutBtn{
+    background-color: red;
+    transition: 0.2s;
+    border-color: white;
+    border-radius: 0px 0px 10px 10px !important;
+    color: white !important;
+}
+
+.logoutBtn:hover{
+    color: white !important;
+    background-color: rgba(153, 0, 0, 0.8) !important;
+    transition: 0.2s;    
+    border-radius: 0px 0px 10px 10px !important;
+}
+
+.dropdownMenuCustom{
+    background-color: rgba(255, 255, 255, 0.209);
+    border-radius: 10px;
 }
