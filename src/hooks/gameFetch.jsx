@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+export default async function gameFetch({ params }) {
 
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}games/${params.id}?key=${import.meta.env.VITE_API_KEY}`);
+    const json = await response.json();
 
-export default function gameFetch() {
+    const game = json;
+    const ratingRecommended = json.ratings[0].percent;
+    const ratingExceptional = json.ratings[1].percent;
+    const ratingMeh = json.ratings[2].percent;
+    const ratingSkip = json.ratings[3].percent;
 
-    const { id } = useParams();
-    const [game, setGame] = useState({});
-    
-    useEffect(() => {
-        (async function fetchGame() {
-            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}games/${id}?key=${import.meta.env.VITE_API_KEY}`);
-            const json = await response.json();
-            setGame(json);
-        })();
-    }, [id]);
-    
-    return game;
+    // console.log(game);
+
+    return { game, ratingRecommended, ratingExceptional, ratingMeh, ratingSkip };
 }

@@ -23,7 +23,7 @@ export function Middleware() {
     }
 
     return <Outlet />;
-}
+};
 
 
 const router = createBrowserRouter(
@@ -31,7 +31,10 @@ const router = createBrowserRouter(
         <Route path="/" element={<AppLayout />}>
             <Route path="/" element={<AppHome />} loader={filters} />
             <Route path="/games/:name" element={<SearchedGameNamePage />} />
-            <Route path="/game/:id" element={<GameDetail loader={gameFetch} />} />
+            
+            <Route path="/game/:id" element={<GameDetail />} loader={gameFetch} />
+
+            {/* <Route path="/game/:id" element={<GameDetail />}/> */}
             <Route path="/games/:genre" element={<GamesByGenre />} />
             <Route path="/games/platform/:platform/:platformName" element={<GamesByPlatform />} />
             <Route path="/login" element={<LoginPage />} />

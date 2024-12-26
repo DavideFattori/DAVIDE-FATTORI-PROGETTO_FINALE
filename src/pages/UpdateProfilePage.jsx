@@ -62,11 +62,10 @@ export default function UpdateProfilePage() {
 
     return (
 
-        <div className="container-fluid text-white formContainer">
+        <div className="container-fluid text-white profileContainerCustom">
             <ToastContainer />
             <div className="row w-50">
                 <div className="col-12">
-                    <img url={avatar_url} alt="prova" />
                     <div className="rounded-3 p-4 form">
                         <h1>Modifica il tuo profilo</h1>
                         <form onSubmit={updateProfile} className='d-flex flex-column justify-content-center'>

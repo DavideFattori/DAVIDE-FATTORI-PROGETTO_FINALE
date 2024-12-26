@@ -7,6 +7,8 @@ export default function getProfileAvatar(url) {
     
     useEffect(() => {
         if (url) downloadImage(url)
+        
+        setAvatarUrl("../images/base_profile.png")
     }, [url])
 
     async function downloadImage(path) {
