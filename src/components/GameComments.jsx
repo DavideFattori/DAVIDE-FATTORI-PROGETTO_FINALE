@@ -2,9 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import supabase from "../supabase/client";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import SessionContext from "../context/SessionContext";
-import Moment from 'react-moment';
+import { format } from 'date-fns';
 import '../style/gameDetail.css';
-import moment from "moment";
+
 
 export default function GameComments({ game }) {
 
@@ -123,8 +123,6 @@ export default function GameComments({ game }) {
 
     }, [])
 
-    moment.locale('it');
-
 
     return (
         
@@ -134,11 +132,10 @@ export default function GameComments({ game }) {
                     <div className="col-12 p-0">
                         {comments.length === 0 && <p className="m-0 text-white p-3">Non ci sono commenti</p>}
                         {comments.map((comment) => (
-                            <div className="border-bottom p-3" key={comment.id}>
+                            <div className="border-bottom p-3 d-flex flex-column" key={comment.id}>
                                 <p className="m-0 text-white-50">{comment.profile_username}:</p>
                                 <h6 className="m-0">{comment.content}</h6>
-                                {/* <Moment format="MMMM Do YYYY, h:mm:ss a">{comment.created_at.replace(" ", "T").replace("+00", "Z")}</Moment> */}
-                                {/* <p>{comment.created_at.slice(0, 10)}</p> */}
+                                <p className="m-0 ms-auto text-white-50 dataCommento">{format(new Date(comment.created_at), 'dd/MM/yyyy, HH:mm')}</p>
                             </div>
                         ))}
 

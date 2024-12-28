@@ -146,3 +146,7 @@
 .commentSubmitButton:hover{
     color: var(--acc) !important;
 }
+
+.dataCommento{
+    font-size: 0.7rem;
+}
