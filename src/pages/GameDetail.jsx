@@ -16,7 +16,6 @@ export default function GameDetail() {
     const [favourite, setFavourite] = useState([]);
     const [displayedImage, setDisplayedImage] = useState(game.background_image);
     const navigate = useNavigate();
-    const [comments, setComments] = useState([]);
 
 
     //grafico a torta dei ratings del gioco
@@ -153,47 +152,62 @@ export default function GameDetail() {
         }
     }
 
-    //funzione per aggiungere un commento
-    async function handleCommentSubmit(event) {
-        event.preventDefault();
-        const formComment = event.currentTarget;
-        const { comment } = Object.fromEntries(new FormData(formComment));
-        const { error } = await supabase
-            .from('comments')
-            .insert([{
-                profile_id: session.user.id,
-                game_id: game.id,
-                content: comment
-            }])
-            .select();
+    // //funzione per aggiungere un commento
+    // async function handleCommentSubmit(event) {
+    //     event.preventDefault();
+    //     const formComment = event.currentTarget;
+    //     const { comment } = Object.fromEntries(new FormData(formComment));
+    //     if (!comment) {
+    //         toast.error('Inserisci un commento', {
+    //             position: "bottom-right",
+    //             autoClose: 2500,
+    //             hideProgressBar: false,
+    //             closeOnClick: false,
+    //             pauseOnHover: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //             theme: "dark",
+    //             transition: Bounce,
+    //         });
+    //         return;
+    //     }
+    //     const { error } = await supabase
+    //         .from('comments')
+    //         .insert([{
+    //             profile_id: session.user.id,
+    //             profile_username: session.user.user_metadata.username,
+    //             game_id: game.id,
+    //             content: comment
+    //         }])
+    //         .select();
 
-            if (!error) {
-                checkFavourite();
-                toast.success('Commento aggiunto', {
-                    position: "bottom-right",
-                    autoClose: 2500,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
-            } else {
-                toast.error(error.message, {
-                    position: "bottom-right",
-                    autoClose: 2500,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
-            }
-    }
+    //         if (!error) {
+    //             checkFavourite();
+    //             toast.success('Commento aggiunto', {
+    //                 position: "bottom-right",
+    //                 autoClose: 2500,
+    //                 hideProgressBar: false,
+    //                 closeOnClick: false,
+    //                 pauseOnHover: true,
+    //                 draggable: true,
+    //                 progress: undefined,
+    //                 theme: "dark",
+    //                 transition: Bounce,
+    //             });
+    //         } else {
+    //             toast.error(error.message, {
+    //                 position: "bottom-right",
+    //                 autoClose: 2500,
+    //                 hideProgressBar: false,
+    //                 closeOnClick: false,
+    //                 pauseOnHover: true,
+    //                 draggable: true,
+    //                 progress: undefined,
+    //                 theme: "dark",
+    //                 transition: Bounce,
+    //             });
+    //         }
+    // }
 
     
     //richiamo della funzione per capire se il gioco è già nei preferiti ed i commenti al caricamento del componente
@@ -306,14 +320,14 @@ export default function GameDetail() {
                     <div className="col-4">
                         <h4 className="text-white mb-2 mt-4">Commenti</h4>
 
-                        <GameComments className="descrizione" game={game}/>
+                        <GameComments game={game}/>
                         
-                        {session && 
-                            <form onSubmit={handleCommentSubmit}>
-                                <input type="text" name="comment" placeholder="Scrivi un commento"/>
-                                <button type="submit">Invia</button>
+                        {/* {session && 
+                            <form className="w-100" onSubmit={handleCommentSubmit}>
+                                <input className="mt-1 input rounded" type="text" name="comment" placeholder="Scrivi un commento"/>
+                                <button className="btn" type="submit">Invia</button>
                             </form>
-                        }
+                        } */}
                     </div>
                 </div>
             </div>

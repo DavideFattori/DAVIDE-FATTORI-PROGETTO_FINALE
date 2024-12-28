@@ -1,10 +1,73 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import supabase from "../supabase/client";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import SessionContext from "../context/SessionContext";
+import Moment from 'react-moment';
+import '../style/gameDetail.css';
+import moment from "moment";
 
 export default function GameComments({ game }) {
 
     const [comments, setComments] = useState([]);
-    const [error, setError] = useState("");
+    const session = useContext(SessionContext);
+
+
+    //funzione per aggiungere un commento
+    async function handleCommentSubmit(event) {
+        event.preventDefault();
+        const formComment = event.currentTarget;
+        const { comment } = Object.fromEntries(new FormData(formComment));
+        if (!comment) {
+            toast.error('Inserisci un commento', {
+                position: "bottom-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
+            return;
+        }
+        const { error } = await supabase
+            .from('comments')
+            .insert([{
+                profile_id: session.user.id,
+                profile_username: session.user.user_metadata.username,
+                game_id: game.id,
+                content: comment
+            }])
+            .select();
+
+        if (!error) {
+            toast.success('Commento aggiunto', {
+                position: "bottom-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
+        } else {
+            toast.error(error.message, {
+                position: "bottom-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
+        }
+    }
+
 
     const getInitialComments = async () => {
 
@@ -17,13 +80,23 @@ export default function GameComments({ game }) {
             .order('created_at', { ascending: false });
 
         if (error) {
-            setError(error.message);
+            setError(error);
+            toast.error(error.message, {
+                position: "bottom-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
             return;
         }
 
         setComments(data);
     };
-
 
 
     useEffect(() => {
@@ -50,20 +123,36 @@ export default function GameComments({ game }) {
 
     }, [])
 
+    moment.locale('it');
 
 
     return (
-        <div className="container-fluid bg-transparent border text-white rounded-3">
-            <div className="row">
-                <div className="col-12 p-0">
-                    {comments.length === 0 && <p>Non ci sono commenti</p>}
-                    {comments.map((comment) => (
-                        <div className="border-bottom px-2 py-3" key={comment.id}>
-                            <p className="m-0">{comment.content}</p>
-                        </div>
-                    ))}
+        
+            <div className="container-fluid bg-transparent border text-white rounded-3">
+                <ToastContainer />
+                <div className="row containerCommenti">
+                    <div className="col-12 p-0">
+                        {comments.length === 0 && <p className="m-0 text-white p-3">Non ci sono commenti</p>}
+                        {comments.map((comment) => (
+                            <div className="border-bottom p-3" key={comment.id}>
+                                <p className="m-0 text-white-50">{comment.profile_username}:</p>
+                                <h6 className="m-0">{comment.content}</h6>
+                                {/* <Moment format="MMMM Do YYYY, h:mm:ss a">{comment.created_at.replace(" ", "T").replace("+00", "Z")}</Moment> */}
+                                {/* <p>{comment.created_at.slice(0, 10)}</p> */}
+                            </div>
+                        ))}
+
+                    </div>
                 </div>
+                {session &&
+                    <form className="row py-2 border-top commentForm" onSubmit={handleCommentSubmit}>
+                        <div className="col-12 d-flex">
+                            <input className="w-100 rounded bg-transparent text-white commentInput" type="text" name="comment" placeholder="Scrivi un commento" />
+                            <button className="btn ms-auto text-white commentSubmitButton" type="submit">Invia</button>
+                        </div>
+                    </form>
+                }
             </div>
-        </div>
+        
     )
 }

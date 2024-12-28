@@ -93,7 +93,7 @@
 
 
 .descrizione{
-    max-height: 200px;
+    max-height: 310px;
     overflow-y: auto;
 }
 
@@ -119,4 +119,30 @@
     transform: scale(1.1);
     cursor: pointer;
     transition: 0.2s;
+}
+
+
+.commentInput{
+    border-color: transparent !important;
+}
+
+.commentInput:focus-visible{
+    outline: transparent !important;
+}
+
+.commentInput::placeholder{
+    color: rgb(182, 182, 182) !important;
+}
+
+.containerCommenti{
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.commentForm{
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.commentSubmitButton:hover{
+    color: var(--acc) !important;
 }
