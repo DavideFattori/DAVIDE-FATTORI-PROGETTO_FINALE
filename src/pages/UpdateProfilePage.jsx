@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import supabase from '../supabase/client'
 import SessionContext from '../context/SessionContext'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
@@ -13,6 +13,7 @@ import '../style/profilePage.css'
 export default function UpdateProfilePage() {
     const session = useContext(SessionContext)
     const { loading, username, first_name, last_name, avatar_url, setUsername, setFirst_name, setLast_name, setAvatar_url, setLoading } = useProfile()
+    const navigate = useNavigate()
 
     async function updateProfile(event, avatarUrl) {
         event.preventDefault()
@@ -66,6 +67,9 @@ export default function UpdateProfilePage() {
             <ToastContainer />
             <div className="row w-50">
                 <div className="col-12">
+                <div className="col-12 d-flex justify-content-center mb-3">
+                    <button className="bg-transparent border-0 d-flex align-items-center fs-5 backBtn" onClick={() => navigate(-1)}><i className="fi fi-br-angle-left d-flex align-items-center"></i> indietro</button>
+                </div>
                     <div className="rounded-3 p-4 form">
                         <h1>Modifica il tuo profilo</h1>
                         <form onSubmit={updateProfile} className='d-flex flex-column justify-content-center'>

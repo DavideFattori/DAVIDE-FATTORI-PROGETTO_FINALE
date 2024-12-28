@@ -53,13 +53,6 @@
     transition: 0.3s;
 }
 
-.backBtn{
-    color : var(--white);
-}
-
-.backBtn:hover{
-    color: var(--acc);
-}
 
 .favouritesBtn{
     background-color: rgba(58, 134, 50, 0.585);
@@ -114,4 +107,16 @@
 
 .valoriAcc{
     color: var(--acc);
+}
+
+
+.screenShotsPreviews{
+    width: 10%;
+    transition: 0.2s;
+}
+
+.screenShotsPreviews:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: 0.2s;
 }

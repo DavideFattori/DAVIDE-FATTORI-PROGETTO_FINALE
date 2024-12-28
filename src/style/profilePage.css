@@ -2,9 +2,9 @@
 @import './logSignPages.css';
 
 
-.profileContainerCustom{
-    padding-top: 80px;
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.839) 0%, rgba(0,0,0,0.839) 100%), url(../../images/profileBg.png);
+.profileContainerCustom {
+    padding-top: 100px;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.839) 0%, rgba(0, 0, 0, 0.839) 100%), url(../../images/profileBg.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -12,7 +12,37 @@
     width: 100%;
 }
 
-.profileImage{
+.profileImage {
     border-radius: 20px;
     margin-bottom: 20px;
+}
+
+.favAccordionBtn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.favAccordionBtn:not(.collapsed) {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.favAccordionBtn::after {
+    background-image: url('../../images/arrow-down.svg') !important;
+}
+
+.favAccordionBtn:focus{
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.accordionBodyCustom{
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
