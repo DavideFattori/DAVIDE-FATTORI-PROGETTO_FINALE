@@ -60,6 +60,10 @@ export default function Navbar() {
         const { error } = await supabase.auth.signOut();
         if (error) {
             toast.error(error.message, {
+                style: {
+                    width: "80%",
+                    right: "1rem",
+                },
                 position: "bottom-right",
                 autoClose: 2500,
                 hideProgressBar: false,
@@ -107,18 +111,18 @@ export default function Navbar() {
                     </form>
 
                     {!session ?
-                        <ul className="navbar-nav ms-4 mb-2 mb-lg-0 searchInputCustom rounded-pill px-3 border">
-                            <li className="nav-item">
-                                <Link to={'/signup'} className="nav-link active text-white linkCustom" >Registrati</Link>
+                        <ul className=" ms-md-4 mb-2 mb-lg-0 me-md-2 logSignBtns rounded-pill px-md-3 py-md-2 border list-unstyled d-flex">
+                            <li className="logSignBtnsContainers rounded-pill me-md-3">
+                                <Link to={'/signup'} className=" text-white linkCustom" >Registrati</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to={'/login'} className="nav-link text-white linkCustom">Accedi</Link>
+                            <li className="logSignBtnsContainers rounded-pill">
+                                <Link to={'/login'} className=" text-white linkCustom">Accedi</Link>
                             </li>
                         </ul>
 
                         :
 
-                        <ul className="navbar-nav ms-3 me-2 mb-2 mb-lg-0">
+                        <ul className="navbar-nav mt-2 mt-md-0 ms-md-3 me-md-2 mb-md-2 mb-lg-0 ">
                             <li className="nav-item dropdown w-100">
                                 <button className="btn dropdownUser dropdown-toggle rounded-pill border-white d-flex ps-2 align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div className="me-1" style={{ 

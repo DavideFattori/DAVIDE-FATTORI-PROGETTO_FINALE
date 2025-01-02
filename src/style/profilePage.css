@@ -14,7 +14,15 @@
 
 .profileImage {
     border-radius: 20px;
-    margin-bottom: 20px;
+}
+
+.userInfo{
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    padding: 0px 20px;
 }
 
 .favAccordionBtn {
@@ -45,4 +53,25 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.link:hover{
+    color: var(--acc) !important;
+    transition: 0.2s;
+}
+
+.avatarUpload{
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .avatarUpload{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .titleModifyProfile{
+        font-size: 1.5rem;
+    }
 }

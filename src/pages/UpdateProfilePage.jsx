@@ -2,7 +2,8 @@ import { useContext } from 'react'
 import { useNavigate } from "react-router";
 import supabase from '../supabase/client'
 import SessionContext from '../context/SessionContext'
-import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import showToast from "../components/Toast";
 import Loader from "../components/Loader";
 import useProfile from '../hooks/useProfile'
 import Avatar from '../components/Avatar'
@@ -33,45 +34,25 @@ export default function UpdateProfilePage() {
         const { error } = await supabase.from('profiles').upsert(updates)
 
         if (error) {
-            toast.error(error.message, {
-                position: "bottom-right",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            showToast(error.message, "error");
         } else {
             setAvatar_url(avatarUrl)
-            toast.success('Modifiche effettuate con successo', {
-                position: "bottom-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            showToast('Modifiche effettuate con successo', "success");
         }
         setLoading(false)
     }
 
     return (
 
-        <div className="container-fluid text-white profileContainerCustom">
+        <div className="container-fluid text-white profileContainerCustom d-flex justify-content-center">
             <ToastContainer />
-            <div className="row w-50">
+            <div className="row">
                 <div className="col-12">
-                <div className="col-12 d-flex justify-content-center mb-3">
-                    <button className="bg-transparent border-0 d-flex align-items-center fs-5 backBtn" onClick={() => navigate(-1)}><i className="fi fi-br-angle-left d-flex align-items-center"></i> indietro</button>
-                </div>
+                    <div className="col-12 d-flex justify-content-center mb-3">
+                        <button className="bg-transparent border-0 d-flex align-items-center fs-5 backBtn" onClick={() => navigate(-1)}><i className="fi fi-br-angle-left d-flex align-items-center"></i> indietro</button>
+                    </div>
                     <div className="rounded-3 p-4 form">
-                        <h1>Modifica il tuo profilo</h1>
+                        <h1 className='text-center titleModifyProfile mb-2'>Modifica il tuo profilo</h1>
                         <form onSubmit={updateProfile} className='d-flex flex-column justify-content-center'>
                             {loading && <Loader />}
 
@@ -83,7 +64,7 @@ export default function UpdateProfilePage() {
                                 }}
                             />
 
-                            <label className='mb-1' htmlFor="username">Username</label>
+                            <label className='mb-1 mt-3' htmlFor="username">Username</label>
                             <input className='rounded-pill inputCustom form-control'
                                 id="username"
                                 type="text"

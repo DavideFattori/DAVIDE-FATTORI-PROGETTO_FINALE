@@ -1,5 +1,13 @@
 @import './constants.css';
 
+
+.gameBasicInfo{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-evenly !important;
+}
+
+
 .gameDetailContainer{
     background-size: cover;
     background-repeat: no-repeat;
@@ -149,4 +157,17 @@
 
 .dataCommento{
     font-size: 0.7rem;
+}
+
+@media screen and (max-width: 768px) {
+    .gameTitle{
+        font-size: 3rem;
+
+    }
+    .infoContainer{
+        flex-direction: column !important;
+    }
+    .favouritesBtn{
+        margin: 7px 0px;
+    }
 }

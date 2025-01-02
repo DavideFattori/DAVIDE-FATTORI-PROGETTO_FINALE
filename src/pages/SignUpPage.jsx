@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router';
 import supabase from '../supabase/client';
-import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import showToast from "../components/Toast";
 import '../style/logSignPages.css'
 
 export default function SignUpPage() {
@@ -27,29 +28,9 @@ export default function SignUpPage() {
                 }
             })
             if (error) {
-                toast.error(error.message, {
-                    position: "bottom-right",
-                    autoClose: 2500,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
+                showToast(error.message, "error");
             } else {
-                toast.success('Utente registrato con successo', {
-                    position: "bottom-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
+                showToast('Utente registrato con successo', "success");
                 await new Promise((resolve) => setTimeout(resolve, 3000));
                 formRegister.reset();
                 navigate('/');

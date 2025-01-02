@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import supabase from "../supabase/client";
-import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import showToast from "../components/Toast";
 import SessionContext from "../context/SessionContext";
 import { format } from 'date-fns';
 import '../style/gameDetail.css';
@@ -18,17 +19,7 @@ export default function GameComments({ game }) {
         const formComment = event.currentTarget;
         const { comment } = Object.fromEntries(new FormData(formComment));
         if (!comment) {
-            toast.error('Inserisci un commento', {
-                position: "bottom-right",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            showToast('Inserisci un commento', "error");
             return;
         }
         const { error } = await supabase
@@ -37,34 +28,15 @@ export default function GameComments({ game }) {
                 profile_id: session.user.id,
                 profile_username: session.user.user_metadata.username,
                 game_id: game.id,
+                game_name: game.name,
                 content: comment
             }])
             .select();
 
         if (!error) {
-            toast.success('Commento aggiunto', {
-                position: "bottom-right",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            showToast('Commento aggiunto', "success");
         } else {
-            toast.error(error.message, {
-                position: "bottom-right",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            showToast(error.message, "error");
         }
     }
 
@@ -81,17 +53,7 @@ export default function GameComments({ game }) {
 
         if (error) {
             setError(error);
-            toast.error(error.message, {
-                position: "bottom-right",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            showToast(error.message, "error");
             return;
         }
 

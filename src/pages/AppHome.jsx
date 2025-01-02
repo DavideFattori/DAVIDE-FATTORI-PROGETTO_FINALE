@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useAsyncList } from "react-stately";
 import { useInView } from "react-intersection-observer";
-import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import showToast from "../components/Toast";
 import Loader from "../components/Loader";
 import Card from "../components/Card";
 import Header from "../components/Header";
@@ -25,17 +26,7 @@ export default function AppHome() {
             } catch (error) {
                 setLoading(false);
                 setLoadingError(true);
-                toast.error('la pagina non si è caricata correttamente, riprovare', {
-                    position: "bottom-right",
-                    autoClose: 2500,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                    transition: Bounce,
-                });
+                showToast('la pagina non si è caricata correttamente, riprovare', "error");
             }
         }
     });

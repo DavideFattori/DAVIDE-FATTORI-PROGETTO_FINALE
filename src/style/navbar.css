@@ -3,9 +3,14 @@
 
 nav{
     z-index: 999;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.588) 45%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.592) 35%, rgba(255,255,255,0) 100%);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
+}
+
+.linkCustom{
+    color: var(--white) !important;
+    text-decoration: none !important;
 }
 
 .linkCustom:hover{
@@ -16,6 +21,13 @@ nav{
     height: 30px;
 }
 
+.logSignBtns{
+
+    background-color: rgba(255, 255, 255, 0.209);
+    color: var(--white) !important;
+    border-color: white !important;
+
+}
 
 .searchInputCustom{
     background-color: rgba(255, 255, 255, 0.209);
@@ -127,6 +139,47 @@ nav{
 }
 
 .dropdownMenuCustom{
-    background-color: rgba(255, 255, 255, 0.209);
+    background-color: rgba(0, 0, 0, 0.687);
     border-radius: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    nav{
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.814) 50%, rgba(255,255,255,0) 100%);
+    }
+
+    .navbar-toggler-icon{
+        background-image: url("../../images/navbar_burger.png") !important;
+    }
+
+    .logSignBtnsContainers{
+        width: 45% !important;
+        display: inline-block !important;
+        background-color: rgba(255, 255, 255, 0.209);
+        color: var(--white) !important;
+        border: 1px solid white !important;
+        padding: 10px;
+        /* border-radius: 30%; */
+        text-align: center !important;
+
+    }
+
+    .logSignBtns{
+        display: flex !important;
+        justify-content: space-between !important;
+        background-color: transparent !important;
+        border: none !important;
+        margin-top: 10px;
+        padding-left: 0px !important;
+    }
+
+    .dropdownUser{
+        margin-left: 300px;
+    }
+
+    .dropdownMenuCustom{
+        width: 30% !important;
+        margin-left: 250px;
+    }
 }

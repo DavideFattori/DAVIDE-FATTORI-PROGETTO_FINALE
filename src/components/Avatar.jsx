@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import supabase from '../supabase/client'
+import '../style/profilePage.css'
 
 export default function Avatar({ url, size, onUpload }) {
     const [avatarUrl, setAvatarUrl] = useState(null)
@@ -50,23 +51,20 @@ export default function Avatar({ url, size, onUpload }) {
     }
 
     return (
-        <div>
+        <div className='avatarUpload'>
             {avatarUrl ? (
                 <img
                     src={avatarUrl}
                     alt="Avatar"
-                    className="avatar image"
+                    className="avatar image rounded"
                     style={{ height: size, width: size }}
                 />
             ) : (
                 <div className="avatar no-image" style={{ height: size, width: size }} />
             )}
             <div style={{ width: size }}>
-                <label className="button primary block" htmlFor="single">
-                    {uploading ? 'Uploading ...' : 'Upload'}
-                </label>
                 <input
-
+                    className='mt-2 mt-md-0 ms-md-3'
                     type="file"
                     id="single"
                     accept="image/*"
