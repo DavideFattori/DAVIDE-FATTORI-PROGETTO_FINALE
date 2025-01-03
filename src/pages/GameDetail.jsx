@@ -181,7 +181,7 @@ export default function GameDetail() {
                     </div>
                 </div>
                 <div className="col-5 col-md-2 m-0 p-0 d-flex justify-content-start">
-                    <div className="chart">
+                    <div className="chart chartCoustom">
                         <Pie data={data} options={config.options} />
                     </div>
                 </div>

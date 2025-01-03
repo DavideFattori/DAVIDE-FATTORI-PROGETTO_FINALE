@@ -164,10 +164,16 @@
         font-size: 3rem;
 
     }
+
     .infoContainer{
         flex-direction: column !important;
     }
+
     .favouritesBtn{
         margin: 7px 0px;
+    }
+
+    .chartCoustom{
+        width: 95%;
     }
 }
