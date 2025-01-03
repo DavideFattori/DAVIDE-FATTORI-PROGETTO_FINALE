@@ -12,6 +12,9 @@
     justify-content: center;
 }
 
+.formCustom{
+    width: 50%;
+}
 
 .linkToLogin{
     color: var(--acc);
@@ -58,4 +61,11 @@
 .btnCustom:hover{
     background-color: rgba(255, 166, 0, 0.738);
     transition: 0.2s;
+}
+
+
+@media screen and (max-width: 768px) {
+    .formCustom{
+        width: 1000%;
+    }
 }

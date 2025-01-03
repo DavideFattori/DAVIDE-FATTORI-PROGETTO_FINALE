@@ -47,7 +47,7 @@ export default function SignUpPage() {
     return (
         <div className="container-fluid text-white formContainer">
             <ToastContainer />
-            <div className="row w-50">
+            <div className="row formCustom">
                 <div className="col-12">
                     <div className="rounded-3 p-4 form">
                         <h1>Registrati</h1>
