@@ -2,7 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import supabase from "../supabase/client";
 import SessionContext from "../context/SessionContext";
-import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import showToast from "../components/Toast";
 import useProfile from "../hooks/useProfile";
 import getProfileAvatar from "../hooks/getProfileAvatar";
 import '../style/navbar.css'
@@ -59,21 +60,7 @@ export default function Navbar() {
     const signOut = async () => {
         const { error } = await supabase.auth.signOut();
         if (error) {
-            toast.error(error.message, {
-                style: {
-                    width: "80%",
-                    right: "1rem",
-                },
-                position: "bottom-right",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            showToast(error.message, "error");
             setShowToast(true);
         }
     };

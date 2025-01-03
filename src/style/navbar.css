@@ -146,7 +146,7 @@ nav{
 
 @media screen and (max-width: 768px) {
     nav{
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.814) 50%, rgba(255,255,255,0) 100%);
+        background: linear-gradient(180deg, rgb(0, 0, 0) 80%, rgba(255,255,255,0) 100%);
     }
 
     .navbar-toggler-icon{

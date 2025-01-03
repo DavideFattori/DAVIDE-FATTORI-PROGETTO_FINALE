@@ -8,7 +8,21 @@ header{
     background-repeat: no-repeat;
 }
 
-.headerTitle{
+.headerTitleContainer{
     height: 50vh;
     background: rgba(0, 0, 0, 0.499);
+}
+
+@media screen and (max-width: 768px) {
+    header{
+        height: 30vh;
+    }
+
+    .headerTitleContainer{
+        height: 30vh;
+    }
+
+    .headerTitle{
+        font-size: 1.5rem !important;
+    }
 }
