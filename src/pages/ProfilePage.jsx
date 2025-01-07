@@ -68,13 +68,15 @@ export default function ProfilePage() {
 
 
     return (
-        <div className="container-fluid profileContainerCustom">
+        <div className="container-fluid profileContainerCustom d-flex flex-column align-items-center px-3 px-md-0">
             <ToastContainer />
-            <div className="row justify-content-center">
-                <div className="col-9 col-md-3 d-flex justify-content-center">
-                    <img className="profileImage img-fluid " src={avatarUrl} alt="profile-image" />
+            <div className="row justify-content-evenly userInfo py-3 rounded-3">
+                <div className="col-5 col-md-3 d-flex justify-content-center">
+                    <div className="h-100 w-100 d-flex align-items-center">
+                        <img className="profileImage img-fluid" src={avatarUrl} alt="profile-image" />
+                    </div>
                 </div>
-                <div className="col-8 col-md-4 mt-2 mt-md-0 py-3 py-md-0 d-flex flex-column justify-content-evenly userInfo">
+                <div className="col-5 col-md-4 mt-2 mt-md-0 py-3 py-md-0 d-flex flex-column justify-content-evenly">
                     <div className='mb-2 mb-md-0'>
                         <p className="text-white border-bottom p-0 m-0">Username </p> <h3 className="text-white mt-1">{username}</h3>
                     </div>
@@ -87,10 +89,7 @@ export default function ProfilePage() {
 
                     <Link to="/profile/update" className="text-white link">Modifica le informazioni</Link>
                 </div>
-            </div>
-
-            <div className="row justify-content-center">
-                <div className="col-8 col-md-2 mt-4 mt-md-5">
+                <div className="col-11 col-md-5 mt-4 mt-md-5 p-0 me-md-2">
                     <div className='w-100'>
                         <div className="accordion" id="accordionFav">
                             <div className="accordion-item bg-transparent">
@@ -120,7 +119,7 @@ export default function ProfilePage() {
                         </div>
                     </div>
                 </div>
-                <div className="col-8 col-md-2 mt-3 mt-md-5">
+                <div className="col-11 col-md-5 mt-3 mt-md-5 p-0">
                     <div className='w-100'>
                         <div className="accordion" id="accordionComments">
                             <div className="accordion-item bg-transparent">
@@ -151,6 +150,7 @@ export default function ProfilePage() {
                     </div>
                 </div>
             </div>
+
         </div>
     )
 }

@@ -81,7 +81,7 @@ export default function GamesByGenre() {
             <div className="offcanvas offcanvas-end w-75 offcanvasBody" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div className="offcanvas-header">
                     <h5 className="offcanvas-title text-white" id="offcanvasRightLabel">Filtra per</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i className="fi fi-br-cross text-white"></i></button>
                 </div>
                 <div className="offcanvas-body">
                     <div className="accordion " id="accordionExample">
