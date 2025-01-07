@@ -47,8 +47,9 @@ export default function GamesByGenre() {
     }, [platform]);
 
 
+
     return (
-        <div>
+        <div className="">
             <a href="#" className="scrollTop"><i className="fi fi-br-angle-small-up"></i></a>
             <div className="container-fluid">
                 <div className="row">
