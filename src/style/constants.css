@@ -42,3 +42,34 @@
 .backBtn:hover{
     color: var(--acc);
 }
+
+.filtersOffcanvasBtn{
+    display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+
+    .sidebar{
+        display: none !important;
+    }
+
+    .filtersOffcanvasBtn{
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .filterIcon{
+        font-size: 1.5rem;
+    }
+
+    .offcanvasBody{
+        background: rgba(0, 0, 0, 0.842);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(0px);
+    }
+
+    .accordion-button::after{
+        background-image: url('../../images/arrow-down.svg') !important;
+    }
+}

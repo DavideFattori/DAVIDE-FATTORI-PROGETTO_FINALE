@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { useAsyncList } from "react-stately";
 import { useInView } from "react-intersection-observer";
@@ -11,7 +11,8 @@ export default function SearchedGameNamePage() {
 
     const { name } = useParams();
     const [loading, setLoading] = useState(false);
-
+    const navigate = useNavigate();
+    
 
     let games = useAsyncList({
         async load({ signal, cursor }) {
@@ -53,6 +54,9 @@ export default function SearchedGameNamePage() {
                 <div className="row">
                     <div className="col-12 p-0 mb-3">
                         <Header text={name} />
+                    </div>
+                    <div className="d-flex justify-content-center mb-3 backBtnContainer">
+                        <button className="bg-transparent border-0 d-flex align-items-center fs-5 backBtn" onClick={() => navigate(-1)}><i className="fi fi-br-angle-left d-flex align-items-center"></i> indietro</button>
                     </div>
                     {games.items && games.items.map(game => (
                         <div key={game.id} className="col-6 col-md-4 p-0">
