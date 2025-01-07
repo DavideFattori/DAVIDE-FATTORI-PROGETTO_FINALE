@@ -110,7 +110,8 @@
 }
 
 .chart{
-    height: 200px;
+    height: 250px !important;
+    width: 250px !important;
 }
 
 .valoriAcc{
@@ -173,7 +174,13 @@
         margin: 7px 0px;
     }
 
-    .chartCoustom{
-        width: 95%;
+    .chartContainer{
+        justify-content: start !important;
+        
+    }
+
+    .chart{
+        height: 170px !important;
+        width: 170px !important;
     }
 }

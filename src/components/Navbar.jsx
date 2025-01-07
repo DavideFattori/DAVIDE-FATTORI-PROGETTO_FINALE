@@ -69,7 +69,7 @@ export default function Navbar() {
         <nav className="navbar navbar-expand-lg position-absolute w-100">
             {showToast && <ToastContainer />}
             <div className="container-fluid">
-                <Link to={'/'} className="navbar-brand text-white linkCustom"><img className='logoNav me-2' src="/images/logo_bordo.png" alt="logo" />Rehacktor</Link>
+                <Link to={'/'} className="navbar-brand text-white linkCustom"><img className='logoNav me-2' src="/images/logo_bordo.png" alt="logo" />GamesArchive</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

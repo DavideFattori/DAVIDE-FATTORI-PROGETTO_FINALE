@@ -29,3 +29,8 @@
     overflow-y: auto;
     transition: max-height 0.5s ease;
 }
+
+.filtersContainer{
+    position: sticky;
+    top: 10px;
+}

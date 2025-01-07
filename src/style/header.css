@@ -15,11 +15,11 @@ header{
 
 @media screen and (max-width: 768px) {
     header{
-        height: 30vh;
+        height: 25vh;
     }
 
     .headerTitleContainer{
-        height: 30vh;
+        height: 25vh;
     }
 
     .headerTitle{

@@ -19,6 +19,8 @@ export default function GameDetail() {
     const navigate = useNavigate();
 
 
+    
+
     //grafico a torta dei ratings del gioco
     const xValues = ['Recommended', 'Exceptional', 'Meh', 'Skip'];
     const yValues = [ratingRecommended, ratingExceptional, ratingMeh, ratingSkip];
@@ -38,10 +40,16 @@ export default function GameDetail() {
         options: {
             plugins: {
                 legend: {
+                    position: 'left',
                     labels: {
+                        boxWidth: 10,
+                        boxHeight: 10,
+                        padding: 10,
                         color: '#fff'
                     }
-                }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
             }
         }
     };
@@ -180,8 +188,8 @@ export default function GameDetail() {
 
                     </div>
                 </div>
-                <div className="col-5 col-md-2 m-0 p-0 d-flex justify-content-start">
-                    <div className="chart chartCoustom">
+                <div className="col-5 col-md-2 m-0 p-0 d-flex justify-content-center chartContainer">
+                    <div className="chart">
                         <Pie data={data} options={config.options} />
                     </div>
                 </div>

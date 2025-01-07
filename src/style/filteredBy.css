@@ -1,0 +1,15 @@
+@import './constants.css';
+
+.backBtnContainer{
+    position: absolute !important;
+    top: 370px !important;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .backBtnContainer{
+        position: absolute !important;
+        top: 170px !important;
+    }
+}

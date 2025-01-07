@@ -35,8 +35,8 @@ const router = createBrowserRouter(
             <Route path="/game/:id" element={<GameDetail />} loader={gameFetch} />
 
             {/* <Route path="/game/:id" element={<GameDetail />}/> */}
-            <Route path="/games/:genre" element={<GamesByGenre />} />
-            <Route path="/games/platform/:platform/:platformName" element={<GamesByPlatform />} />
+            <Route path="/games/genre/:genre" element={<GamesByGenre />} loader={filters} />
+            <Route path="/games/platform/:platform/:platformName" element={<GamesByPlatform />} loader={filters}/>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route element={<Middleware />}> 

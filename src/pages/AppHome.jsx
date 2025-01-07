@@ -58,7 +58,7 @@ export default function AppHome() {
                     <div className="col-10">
                         <div className="row">
                             <div className="col-12 ps-0">
-                                <h2 className="text-white display-3 fw-bold mb-5">Tutti i giochi</h2>
+                                <h2 className="text-white display-3 fw-bold mb-5">TUTTI I GIOCHI</h2>
                             </div>
                             {games.items && games.items.map(game => (
                                 <div key={game.id} className="col-6 col-md-3 p-0 ">
